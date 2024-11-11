@@ -3,10 +3,8 @@ package com.artinc.memodeck.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "flashcards")
-data class Flashcard(
+@Entity(tableName = "categories")
+data class Category(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val categoryId: Int,
-    val question: String,
-    val answer: String,
+    val title: String,
 )

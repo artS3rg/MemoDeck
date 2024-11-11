@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.devtools.ksp") version "1.9.0-1.0.12"
+    id("kotlin-parcelize")
 }
 
 android {
@@ -66,4 +69,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    val room_version = "2.6.1"
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    // To use Kotlin Symbol Processing (KSP)
+    ksp(libs.androidx.room.compiler)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+    // optional - RxJava2 support for Room
+    implementation(libs.androidx.room.rxjava2)
+    // optional - RxJava3 support for Room
+    implementation(libs.androidx.room.rxjava3)
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation(libs.androidx.room.guava)
+    // optional - Test helpers
+    testImplementation(libs.androidx.room.testing)
+    // optional - Paging 3 Integration
+    implementation(libs.androidx.room.paging)
 }
